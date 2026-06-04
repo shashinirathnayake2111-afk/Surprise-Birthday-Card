@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap');
+
+.message-page-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at center, #1a0b2e 0%, #050a1a 100%);
+  z-index: 250;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.letter-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 77, 109, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 40%);
+  z-index: -1;
+}
+
+.letter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+}
+
+.back-btn-letter {
+  position: fixed; /* Top-left corner */
+  top: 30px;
+  left: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 300;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.back-btn-letter:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transform: scale(1.05);
+}
+
+.envelope {
+  position: relative;
+  width: 550px;
+  height: 500px; /* Increased to cover the 480px letter */
+  background: #f0f0f0; /* Back color */
+  cursor: pointer;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  transition: transform 0.5s ease;
+  z-index: 5;
+  overflow: visible; /* Allow letter to slide out */
+}
+
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e0e0e0;
+  z-index: 0;
+  border-radius: 5px;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 60px;
+  /* Diagonal cuts for the envelope front */
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 45%);
+  border-radius: 5px;
+}
+
+.seal {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+  z-index: 10;
+  position: absolute;
+  top: 45%; /* Positioned where the flap meets */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: sealFloat 3s infinite ease-in-out;
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.envelope-to {
+  color: #333;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  z-index: 5;
+  margin-bottom: 50px; /* Increased for taller envelope */
+}
+
+.envelope-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #e5e5e5;
+  z-index: 4;
+  clip-path: polygon(0 0, 100% 0, 50% 45%); /* Triangular flap */
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope.open .envelope-top {
+  transform: rotateX(160deg); /* Flip it open */
+  z-index: 1; /* Move behind when open */
+}
+
+.letter-card {
+  position: absolute;
+  top: 10px; /* Positioned slightly higher inside */
+  left: 25px;
+  width: 500px;
+  height: 480px; /* Increased to fit more text */
+  background: #fffdf5; /* Warm cream paper color */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 100% 32px;
+  z-index: 2;
+  padding: 40px 45px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+  overflow-y: auto;
+  border-radius: 8px;
+  border-left: 2px solid rgba(255, 77, 109, 0.25); /* Pink margin line */
+}
+
+.letter-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.letter-card::-webkit-scrollbar-thumb {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.letter-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100%; /* Changed from height: 100% to min-height */
+}
+
+.letter-title {
+  color: #ff4d6d;
+  font-family: 'Playfair Display', 'Noto Sans Sinhala', serif;
+  font-size: 1.8rem; /* Larger */
+  font-style: italic;
+  border-bottom: 2px solid rgba(255, 77, 109, 0.15);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.letter-text {
+  color: #2c3e50;
+  font-size: 1.45rem; /* Caveat font is naturally small, so 1.45rem is perfect */
+  line-height: 32px; /* Aligns perfectly with the background lines */
+  font-family: 'Caveat', 'Noto Sans Sinhala', 'Outfit', sans-serif;
+  margin-bottom: 0;
+  padding-bottom: 32px; /* Maintains lines alignment */
+}
+
+.highlight-text {
+  color: #b38728;
+  font-weight: 700;
+  font-size: 1.55rem;
+  font-family: 'Caveat', 'Noto Sans Sinhala', 'Outfit', sans-serif;
+}
+
+.letter-footer {
+  margin-top: 30px;
+  border-top: 2px solid #f9f9f9;
+  padding-top: 15px;
+  color: #666;
+}
+
+.signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: #ff4d6d;
+  font-size: 1.3rem;
+}
+
+.tap-instruction {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+.special-advice-note {
+  position: absolute;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.advice-right {
+  right: -240px;
+  top: 50px;
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.advice-left {
+  left: -240px;
+  top: 150px;
+  border-color: rgba(255, 77, 109, 0.3);
+}
+
+.advice-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.wish-glow {
+  background: radial-gradient(circle at center, rgba(255, 77, 109, 0.15), transparent 70%);
+}
+
+.advice-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.advice-content p {
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-style: italic;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.advice-icon {
+  animation: starTwinkle 2s infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { scale: 1; opacity: 0.6; }
+  50% { scale: 1.3; opacity: 1; filter: drop-shadow(0 0 10px #ffd700); }
+}
+
+.discover-more-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: linear-gradient(135deg, #ff4d6d, #ffd700);
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
+  transition: all 0.3s ease;
+  animation: pulseButton 2s infinite ease-in-out;
+  z-index: 500;
+}
+
+@keyframes pulseButton {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 15px 45px rgba(255, 77, 109, 0.6); }
+}
+
+.discover-more-btn:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 20px 50px rgba(255, 77, 109, 0.7);
+}
+
+@media (max-width: 600px) {
+  .message-page-container {
+    padding: 20px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .letter-wrapper {
+    width: 100%;
+    gap: 30px;
+    padding-top: 80px;
+  }
+
+  .envelope {
+    width: 280px;
+    height: 320px;
+    margin: 0 auto;
+  }
+  
+  .letter-card {
+    width: 250px;
+    height: 300px;
+    left: 15px;
+    padding: 20px;
+  }
+
+  .letter-title { font-size: 1.2rem; }
+  .letter-text { font-size: 0.85rem; line-height: 1.5; }
+  .envelope-to { font-size: 1.1rem; margin-bottom: 25px; }
+  .seal { width: 50px; height: 50px; }
+  .seal svg { width: 24px; height: 24px; }
+  
+  .back-btn-letter { top: 15px; left: 15px; padding: 6px 12px; font-size: 0.75rem; }
+  .discover-more-btn { 
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 40px auto;
+    width: fit-content;
+  }
+
+  .crazy-toothless {
+    position: absolute !important;
+    bottom: 15px !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    z-index: 150 !important;
+  }
+  
+  .toothless-left {
+    left: 15px !important;
+    right: auto !important;
+  }
+  
+  .toothless-right {
+    right: 15px !important;
+    left: auto !important;
+  }
+  
+  .crazy-toothless img {
+    width: 80px !important;
+  }
+  
+  .toothless-bubble {
+    display: none !important;
+  }
+
+  .toothless-bottom-wrapper {
+    top: 50px !important;
+    width: 90px !important;
+    margin-left: -45px !important;
+  }
+}
+
+/* --- Crazy and Fun Custom Interactive Styles --- */
+
+.click-bubble {
+  position: fixed;
+  font-size: 2.5rem;
+  pointer-events: none;
+  z-index: 999;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
+}
+
+.crazy-toothless {
+  position: absolute;
+  z-index: 150;
+  pointer-events: none; /* Let clicks pass through to background */
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.55));
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.crazy-toothless img {
+  width: 150px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.toothless-left {
+  left: 45px;
+  bottom: 80px;
+}
+
+.toothless-right {
+  right: 45px;
+  bottom: 80px;
+}
+
+/* Center Bottom Peeking Sticker Inside the Envelope */
+.toothless-bottom-wrapper {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  margin-left: -70px; /* Centered exactly: half of 140px width */
+  width: 140px;
+  z-index: 1; /* Sits between envelope back (0) and envelope front (3) */
+  pointer-events: none;
+}
+
+.toothless-bottom-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+.toothless-bubble {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+  font-family: 'Outfit', sans-serif;
+  animation: bubbleFloat 2s infinite ease-in-out;
+}
+
+.toothless-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: #ff4d6d transparent;
+  display: block;
+  width: 0;
+}
+
+.toothless-bubble.bubble-blue {
+  background: linear-gradient(135deg, #00f2ff, #0077ff);
+  box-shadow: 0 8px 20px rgba(0, 242, 255, 0.4);
+}
+
+.toothless-bubble.bubble-blue::after {
+  border-color: #00f2ff transparent;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -6px) scale(1.05); }
+}
+
+@keyframes bgShift {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
+
+.letter-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 77, 109, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+  z-index: -1;
+  animation: bgShift 15s infinite alternate ease-in-out;
+}
+
+.envelope {
+  position: relative;
+  width: 550px;
+  height: 500px;
+  background: #f5f5f5;
+  cursor: pointer;
+  box-shadow: 0 45px 90px rgba(0,0,0,0.65);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  z-index: 5;
+  overflow: visible;
+}
+
+.envelope:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 55px 100px rgba(0,0,0,0.7),
+    0 0 40px rgba(255, 77, 109, 0.35); /* Glowing hover aura */
+}
+
+.letter-sparkle-top {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  animation: starTwinkle 1.5s infinite;
+  pointer-events: none;
+}
+
+.letter-sparkle-bottom {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 1.5rem;
+  animation: starTwinkle 1.8s infinite;
+  pointer-events: none;
+}
+
+.tap-instruction {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: instructionPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes instructionPulse {
+  0%, 100% { transform: scale(1); opacity: 0.65; }
+  50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 15px rgba(255, 77, 109, 0.8); }
+}
