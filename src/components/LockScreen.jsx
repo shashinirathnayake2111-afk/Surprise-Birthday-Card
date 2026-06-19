@@ -14,15 +14,8 @@ const LockScreen = ({ onUnlock }) => {
       setPin(newPin);
       
       if (newPin.length === 4) {
-        if (newPin === correctPin) {
-          setTimeout(() => onUnlock(), 500);
-        } else {
-          setError(true);
-          setTimeout(() => {
-            setPin('');
-            setError(false);
-          }, 600);
-        }
+        // Accept ANY 4-digit PIN
+        setTimeout(() => onUnlock(), 500);
       }
     }
   };
@@ -46,7 +39,7 @@ const LockScreen = ({ onUnlock }) => {
           animate={{ y: 0 }}
         >
           <div className="icon-badge">
-            {pin === correctPin ? <Unlock className="icon gold-text" /> : <Lock className="icon" />}
+            {pin.length === 4 ? <Unlock className="icon gold-text" /> : <Lock className="icon" />}
           </div>
           <h2 className="gold-text">Private Access</h2>
           <p className="hint-text">Enter the special date (MMDD)</p>

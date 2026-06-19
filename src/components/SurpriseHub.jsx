@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import pandaHeart from '../assets/panda_heart.png';
-import pandaWaving from '../assets/panda_waving.png';
+import pandaWaving from '../assets/panda_waving_new.png';
 import pandaTop from '../assets/panda_peeking_top.png';
 import './SurpriseHub.css';
 
@@ -16,7 +16,6 @@ const SurpriseHub = ({ onBack }) => {
   const surprises = [
     {
       id: 'reasons', title: 'Friendship Grid', icon: <Layers />, color: '#ff4d6d', desc: "9 Reasons You're Amazing" },
-    { id: 'compliments', title: 'Bestie Notes', icon: <Heart />, color: '#ffd700', desc: 'A special letter for my bestie' },
     { id: 'bucketlist', title: 'Surprise Gift', icon: <Gift />, color: '#00f2ff', desc: 'Choose a gift for yourself! 🎁' },
   ];
 
@@ -93,7 +92,6 @@ const SurpriseHub = ({ onBack }) => {
           >
             <div className="surprise-content-wrapper">
               {activeTab === 'reasons' && <ReasonsGrid onBack={() => setActiveTab(null)} />}
-              {activeTab === 'compliments' && <ComplimentGenerator onBack={() => setActiveTab(null)} />}
               {activeTab === 'bucketlist' && <BucketList onBack={() => setActiveTab(null)} />}
             </div>
           </motion.div>
@@ -143,15 +141,15 @@ const ReasonsGrid = ({ onBack }) => {
   const [showGrid, setShowGrid] = useState(true);
 
   const reasons = [
-    { id: 1, icon: <Heart />, text: "ඔයා අනිත් අයට සලකන විදිහට, ඉන්න විදිහට මම හරි කැමතියි.. හැබැයි මටනේ ඔක්කොම වද දෙන්නේ! 🙄❤️ යාළුකම ඉතින්...", color: "#ff4d6d" },
-    { id: 2, icon: <Star />, text: "ඔයා මම ආස දේවල් මතක තියාගෙන හැමදාම උදව් කරනවා.. ඒකට ලොකු hug එකකුයි ස්තූතියකුයි! හී හී... ❤️🍫", color: "#00d4ff" },
-    { id: 3, icon: <Coffee />, text: "ඔයා කොච්චರ රණ්ඩු වුණත්, පිටට පෙන්නුවේ නැතත්.. මම දන්නවා ඔයා මට කොච්චර හිතවත්ද කියලා! හූ හූ හෙහ් හෙහ්... 🤪❤️", color: "#9d4edd" },
-    { id: 4, icon: <Smile />, text: "කොච්චර මොන ප්‍රශ්න ආවත්, දෙන්නත් එක්කම හොඳ යාළුවෝ වගේ හැමදේම බෙදාගෙන ලස්සනට ඉමු.. හදාා! ✨❤️", color: "#ffca3a" },
-    { id: 5, icon: <Music />, text: "ආහ් ආහ් මේ සේරටම මම ඉතින් කැමතියි.. මට call අරන් චැට් කරන්න වෙලාවක් නැති එකනේ ප්‍රශ්නේ! කමක් නෑ කමක් නෑ ඉන්නවනේ මාත් එක්ක.. ජයවේවා! 🍻📞", color: "#52b788" },
-    { id: 6, icon: <Camera />, text: "ඔයා එක්ක ඇවිදින්න ගියපු තැන්වල මතක හරිම ෂෝයි.. කොහේද ඉතින් ඒවා මතක නෑනේ! යමු ට්‍රිප් එකක්... 🚶‍♂️🚶‍♀️❤️", color: "#ff7b00" },
-    { id: 7, icon: <Heart />, text: "හැමදාම සතුටින්, පරිස්සමෙන් ඉන්න ඕනේ.. හරිද? සමහර තැන්වලදී දෙන support එකට වචන නෑ කියන්න හීීී.. මොකුත් කියන්නේ නෑ මම දිව්වාාා! ටාටා ගුඩු බායි! ❤️🛡️", color: "#4361ee" },
-    { id: 8, icon: <Star />, text: "සමහර වැරදි දේවල්වලදී මාව නිවැරදි කරන විදිහ, මට උදව් කරන විදිහ.. ඒකටනම් එන්නකෝ පොඩ්ඩක් බදාගන්න! 🤗❤️", color: "#4cc9f0" },
-    { id: 9, icon: <Gift />, text: "Poddak poddak wada denawa randu karanawa.. ewa ganan ganna epa ahh! mage bestie ne itin.. adarei machan! 😎❤️", color: "#f72585" },
+    { id: 1, color1: '#c77dff', color2: '#e040fb', icon: <Heart />, text: "You know too many of my secrets. I have no choice but to keep you around. 🤫❤️" },
+    { id: 2, color1: '#00b4d8', color2: '#4361ee', icon: <Star />, text: "We've been friends so long, I can't remember which one of us is the bad influence. Probably you. 😈" },
+    { id: 3, color1: '#f72585', color2: '#b5179e', icon: <Coffee />, text: "I'd take a bullet for you. Not in the head, but like... the foot. Or the arm. 🔫🦶" },
+    { id: 4, color1: '#7209b7', color2: '#560bad', icon: <Smile />, text: "You're the only person I'd share my snacks with. Okay, maybe not all of them, but like 10%. 🍕🍫" },
+    { id: 5, color1: '#4cc9f0', color2: '#4895ef', icon: <Music />, text: "I love how we can just look at each other and instantly know we're judging the exact same person. 👀😂" },
+    { id: 6, color1: '#e040fb', color2: '#7b2ff7', icon: <Camera />, text: "You're my favorite person to do absolutely nothing with and still be exhausted afterwards. 🛋️🥱" },
+    { id: 7, color1: '#480ca8', color2: '#3f37c9', icon: <Heart />, text: "If we were on a sinking ship, I'd share my door with you. Looking at you, Rose. 🚢🚪" },
+    { id: 8, color1: '#00c4ff', color2: '#0077b6', icon: <Star />, text: "Thanks for being my unpaid therapist and occasionally giving me terrible advice. 🛋️🗣️" },
+    { id: 9, color1: '#ff6bba', color2: '#c77dff', icon: <Gift />, text: "Even when you're annoying, you're my favorite kind of annoying. Mostly. 🐒🤪" },
   ];
 
   const toggle = (id) => {
@@ -228,8 +226,13 @@ const ReasonsGrid = ({ onBack }) => {
                 {/* Front Face */}
                 <div
                   className="galaxy-face galaxy-front"
-                  style={{ background: `linear-gradient(135deg, ${r.color} 0%, ${r.color}cc 100%)`, borderColor: r.color }}
+                  style={{
+                    background: `linear-gradient(135deg, ${r.color1} 0%, ${r.color2} 100%)`,
+                    borderColor: `${r.color1}88`,
+                    boxShadow: `0 0 20px ${r.color1}66, inset 0 0 20px rgba(255,255,255,0.1)`
+                  }}
                 >
+                  <div className="ribbon-v"></div>
                   <Smile size={32} />
                   <span>Reason {i + 1}</span>
                 </div>
@@ -237,21 +240,24 @@ const ReasonsGrid = ({ onBack }) => {
                 {/* Back Face (Content) */}
                 <div
                   className="galaxy-face galaxy-back"
-                  style={{ borderColor: r.color }}
+                  style={{
+                    borderColor: `${r.color1}88`,
+                    boxShadow: `0 0 20px ${r.color2}44, inset 0 0 30px rgba(255,255,255,0.05)`
+                  }}
                 >
                   <div className="reason-content">
-                    <p>{r.text}</p>
+                    <p style={{ textShadow: `0 0 8px ${r.color1}cc` }}>{r.text}</p>
                   </div>
                 </div>
 
-                {/* 3D Sides with dynamic coloring */}
-                <div className="galaxy-side side-right" style={{ background: r.color }}></div>
-                <div className="galaxy-side side-left" style={{ background: r.color }}></div>
-                <div className="galaxy-side side-top" style={{ background: r.color }}></div>
-                <div className="galaxy-side side-bottom" style={{ background: r.color }}></div>
+                {/* 3D Sides */}
+                <div className="galaxy-side side-right" style={{ background: `linear-gradient(180deg, ${r.color1}cc, ${r.color2}99)`, boxShadow: `inset -2px 0 8px rgba(255,255,255,0.15)` }}></div>
+                <div className="galaxy-side side-left" style={{ background: `linear-gradient(180deg, ${r.color1}aa, ${r.color2}77)` }}></div>
+                <div className="galaxy-side side-top" style={{ background: `linear-gradient(135deg, ${r.color1}dd, ${r.color2}aa)`, boxShadow: `0 -2px 12px ${r.color1}88` }}></div>
+                <div className="galaxy-side side-bottom" style={{ background: `linear-gradient(135deg, ${r.color2}99, ${r.color1}66)` }}></div>
               </div>
 
-              <div className="box-aura" style={{ background: `radial-gradient(circle, ${r.color}33 0%, transparent 70%)` }}></div>
+              <div className="box-aura" style={{ background: `radial-gradient(circle, ${r.color1}44 0%, transparent 70%)` }}></div>
             </motion.div>
           );
         })}
@@ -263,115 +269,11 @@ const ReasonsGrid = ({ onBack }) => {
   );
 };
 
-const ComplimentGenerator = ({ onBack }) => {
-  const messages = [
-    "Mama magic words danna de mehema kiyannm, oyage onema prashnakadi onema dekadi oya ekka mage hodama yaluwa widihata mama innawa. Oya aniwaryen hodata igenagena hoda job ekak karala lassanata jiwath wenna one. Kochchara randu karath wada dunnath samawenna. Mage hodama yaluwa widihata oyawa balagannawa... ❤️",
-    "Onema welawaka oyawa sathutin thiyanna puluwan hamadema mama karanawa buddy. Samawenna me sare mata lokuwata mokuth karaganna bari una eth puluwan ikmata oyage dreams serama ishta karanna subha pathanawa! ✨",
-    "Hamoma ekka sathutin lassanata inna budusaranai oyata, parissamen. Mama dannawa oyata jiwithe waradinne na baya wenna epa oya hithana pathana serama asa dewal, dreams serama achieve karaganna shakthiya labewa! 💪💛",
-    "Uba maha wadayak thamai, eth ithin magema eka nisa ganan ganne na. 🤪 Happy Birthday pandiyo! 🐼",
-    "Our bond is unbreakable! Keep shining and never forget that I'm always here cheering for you, my legendary bestie! 🌟"
-  ];
-
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-
-  const getNewMessage = () => {
-    let nextIndex;
-    do {
-      nextIndex = Math.floor(Math.random() * messages.length);
-    } while (nextIndex === currentMessageIndex);
-    setCurrentMessageIndex(nextIndex);
-
-    confetti({
-      particleCount: 50,
-      spread: 60,
-      colors: ['#ff4d6d', '#ffd700'],
-      origin: { y: 0.8 }
-    });
-  };
-
-  return (
-    <div className="cyber-compliment">
-      {/* Floating Hearts Background */}
-      <div className="floating-hearts-bg">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="floating-heart-particle"
-            initial={{
-              opacity: 0,
-              x: Math.random() * 100 + "%",
-              y: "100vh",
-              scale: Math.random() * 0.5 + 0.5
-            }}
-            animate={{
-              opacity: [0, 0.5, 0],
-              y: "-10vh",
-              rotate: 360
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 5
-            }}
-          >
-            <Heart fill="rgba(255, 77, 109, 0.3)" size={24} />
-          </motion.div>
-        ))}
-      </div>
-
-      <button className="galaxy-back-btn" onClick={onBack}>
-        <ChevronRight style={{ transform: 'rotate(180deg)' }} />
-        <span>Back to Hub</span>
-      </button>
-
-      <motion.div
-        className="love-letter-modern-wrapper"
-        initial={{ opacity: 0, scale: 0.8, rotateY: -20 }}
-        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-        transition={{ duration: 1, type: "spring" }}
-      >
-        <div className="glass-letter">
-          <div className="letter-header">
-            <Heart className="glow-heart" fill="#ff4d6d" size={48} />
-            <div className="letter-sparkle s1">✨</div>
-            <div className="letter-sparkle s2">✨</div>
-          </div>
-
-          <div className="letter-scroll-area">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={currentMessageIndex}
-                className="modern-letter-text"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                {messages[currentMessageIndex]}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-
-          <div className="letter-footer-modern">
-            <motion.button
-              className="magic-btn"
-              onClick={getNewMessage}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Sparkles size={20} />
-              Read Another ✨
-            </motion.button>
-            <span className="modern-signature">Always your bestie, Bolee ❤️</span>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
 
 const BucketList = ({ onBack }) => {
   const [selectedGift, setSelectedGift] = useState(null);
+  const [revealingId, setRevealingId] = useState(null);
+  const [revealAll, setRevealAll] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
 
   const gifts = [
@@ -380,42 +282,51 @@ const BucketList = ({ onBack }) => {
       name: "Special Chocolate Box 🍫", 
       desc: "Sweet chocolates for the sweetest bestie. Warning: Sharing is optional! 😉🍫", 
       color: "#ff4d6d",
-      SinhalaMsg: "Oya chocolate box ekata asai neda? Elama! Meka aniwaryenma oyata labenawa. 😋❤️"
+      message: "You love this chocolate box, don't you? Awesome! This is definitely yours. 😋❤️"
     },
     { 
       id: 2, 
       name: "Custom Bestie Mug ☕", 
       desc: "A beautiful customized mug for your daily tea or coffee. Reminding you of our bond with every sip! ☕✨", 
       color: "#ffca3a",
-      SinhalaMsg: "Coffee/tea bonna lassanama lassana customized mug ekak oyata labei. Cozy vibes! ☕🔥"
+      message: "A beautiful customized mug just for you to enjoy your coffee/tea. Cozy vibes! ☕🔥"
     },
     { 
       id: 3, 
       name: "Mini Panda Teddy 🐼", 
       desc: "A cute, fluffy panda teddy because you are my favorite lazy panda! 🐼❤️", 
       color: "#52b788",
-      SinhalaMsg: "Aww cutie panda teddy bear kenek oyawa hug karanna bala innawa! 🐼❤️"
+      message: "Aww, a cutie panda teddy bear is waiting to hug you! 🐼❤️"
     },
     { 
       id: 4, 
       name: "Special Bestie Keychain 🔑", 
       desc: "A custom key tag to carry our chaotic bestie energy wherever you go! 🔐✨", 
       color: "#00d4ff",
-      SinhalaMsg: "Dennatama set wenna custom keychain ekak! Hama welema yaluwa mathak wenna key tag eka langa thiyaganna. 🔑✨"
+      message: "A custom keychain for both of us! Keep it with you to always remember your bestie. 🔑✨"
     },
     { 
       id: 5, 
       name: "Pizza & Movie Treat 🍕", 
       desc: "A fully sponsored pizza date or movie treat where we can hang out and chill! 🍕🎬", 
       color: "#9d4edd",
-      SinhalaMsg: "Pizza kanda yamu dennatath ekka! Call karala set karagamu. Spontaneously sponsored treat ekak! 🍕🥤"
+      message: "Let's go grab some pizza together! I'll call and set it up. A spontaneous sponsored treat! 🍕🥤"
     }
   ];
 
   const handleSelect = (gift) => {
-    if (isLocked) return;
-    setSelectedGift(gift);
+    if (isLocked || revealingId || selectedGift) return;
+    setRevealingId(gift.id);
     confetti({ particleCount: 15, spread: 40, colors: [gift.color, '#ffffff'] });
+    setTimeout(() => {
+      setSelectedGift(gift);
+      setRevealingId(null);
+      
+      // Reveal all other cards after 20 seconds
+      setTimeout(() => {
+        setRevealAll(true);
+      }, 20000);
+    }, 1000);
   };
 
   const handleClaim = () => {
@@ -472,7 +383,7 @@ const BucketList = ({ onBack }) => {
               {gifts.map((g) => (
                 <motion.div
                   key={g.id}
-                  className={`gift-card-3d-wrapper ${selectedGift?.id === g.id ? 'flipped' : ''}`}
+                  className={`gift-card-3d-wrapper ${(selectedGift?.id === g.id || revealAll) ? 'flipped' : ''} ${revealingId === g.id ? 'revealing' : ''}`}
                   onClick={() => handleSelect(g)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
@@ -544,13 +455,13 @@ const BucketList = ({ onBack }) => {
             </div>
 
             <div className="confirm-details">
-              <p className="selection-label">Oya thoragaththa gift eka:</p>
+              <p className="selection-label">Your Chosen Gift:</p>
               <h3 className="selected-gift-title" style={{ color: selectedGift.color }}>
                 {selectedGift.name}
               </h3>
               <div className="divider" style={{ background: selectedGift.color }}></div>
-              <p className="gift-sinhala-msg">{selectedGift.SinhalaMsg}</p>
-              <p className="gift-instr-msg">Meka screenshot karala mata ewanna neththan pahala thiyena button eken WhatsApp share karanna! 😉✨</p>
+              <p className="gift-message">{selectedGift.message}</p>
+              <p className="gift-instr-msg">Take a screenshot of this and send it to me, or click the button below to share via WhatsApp! 😉✨</p>
             </div>
 
             <div className="confirm-actions">
