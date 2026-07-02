@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ChevronRight, ChevronLeft, Heart, Sparkles } from 'lucide-react';
 import img01 from '../assets/image 01.jpg';

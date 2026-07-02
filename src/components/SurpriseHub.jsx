@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Heart, Star, MapPin, Sparkles, Gift, Coffee,
-  Camera, Music, Smile, Send, ChevronRight, X, Layers
+  Heart, Star, Gift, Coffee,
+  Camera, Music, Smile, ChevronRight, Layers
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import pandaHeart from '../assets/panda_heart.png';
@@ -277,6 +277,11 @@ const BucketList = ({ onBack }) => {
   const [isLocked, setIsLocked] = useState(false);
   const [isSecondChance, setIsSecondChance] = useState(false);
 
+  const dreamParticles = useMemo(() => Array.from({ length: 12 }).map(() => ({
+    x: Math.random() * 100,
+    duration: 8 + Math.random() * 8
+  })), []);
+
   const initialGifts = [
     { 
       id: 1, 
@@ -360,13 +365,13 @@ const BucketList = ({ onBack }) => {
   return (
     <div className="cyber-bucket modern-dream-view">
       <div className="dream-particles-container">
-        {[...Array(12)].map((_, i) => (
+        {dreamParticles.map((p, i) => (
           <motion.div
             key={i}
             className="dream-particle"
-            initial={{ y: "110vh", x: Math.random() * 100 + "vw", opacity: 0 }}
+            initial={{ y: "110vh", x: p.x + "vw", opacity: 0 }}
             animate={{ y: "-10vh", opacity: [0, 0.8, 0] }}
-            transition={{ duration: 8 + Math.random() * 8, repeat: Infinity, delay: i * 1.5 }}
+            transition={{ duration: p.duration, repeat: Infinity, delay: i * 1.5 }}
           >
             {i % 3 === 0 ? "🎁" : i % 3 === 1 ? "✨" : "💖"}
           </motion.div>

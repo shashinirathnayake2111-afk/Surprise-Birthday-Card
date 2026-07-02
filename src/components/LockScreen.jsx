@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Unlock, ChevronRight } from 'lucide-react';
 import './LockScreen.css';
 
 const LockScreen = ({ onUnlock }) => {
   const [pin, setPin] = useState('');
-  const [error, setError] = useState(false);
-  const correctPin = '0912';
 
   const handleNumberClick = (num) => {
     if (pin.length < 4) {
@@ -49,8 +47,7 @@ const LockScreen = ({ onUnlock }) => {
           {[...Array(4)].map((_, i) => (
             <motion.div 
               key={i} 
-              className={`pin-dot ${pin.length > i ? 'active' : ''} ${error ? 'error' : ''}`}
-              animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
+              className={`pin-dot ${pin.length > i ? 'active' : ''}`}
             />
           ))}
         </div>
