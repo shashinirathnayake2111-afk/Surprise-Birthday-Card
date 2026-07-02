@@ -8,6 +8,7 @@ import MessagePage from './components/MessagePage';
 import IntroVideo from './components/IntroVideo';
 import Sparkles from './components/Sparkles';
 import SurpriseHub from './components/SurpriseHub';
+import MusicPlayer from './components/MusicPlayer';
 import './index.css';
 
 function App() {
@@ -110,6 +111,8 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <MusicPlayer />
 
       <style>{`
         .app-container {

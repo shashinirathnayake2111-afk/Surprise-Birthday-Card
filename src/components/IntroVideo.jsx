@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import confetti from 'canvas-confetti';
+import './IntroVideo.css';
 
 const IntroVideo = ({ onEnd }) => {
   const [showBalloons, setShowBalloons] = useState(false);
   const [showAge, setShowAge] = useState(false);
-
   useEffect(() => {
     const balloonTimer = setTimeout(() => setShowBalloons(true), 3500);
     const ageTimer = setTimeout(() => setShowAge(true), 4000);
     const endTimer = setTimeout(() => onEnd(), 8500);
+    
     return () => {
       clearTimeout(balloonTimer);
       clearTimeout(ageTimer);
@@ -155,189 +157,6 @@ const IntroVideo = ({ onEnd }) => {
           />
         ))}
       </AnimatePresence>
-
-      <style>{`
-        .skip-intro-btn {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: rgba(255, 255, 255, 0.5);
-          padding: 8px 16px;
-          border-radius: 50px;
-          cursor: pointer;
-          font-size: 0.8rem;
-          z-index: 2000;
-          transition: all 0.3s ease;
-        }
-        .skip-intro-btn:hover {
-          background: rgba(255, 255, 255, 0.15);
-          color: white;
-          border-color: rgba(255, 255, 255, 0.3);
-        }
-        .intro-3d-container {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle at center, #1a2a4a 0%, #050a1a 100%);
-          z-index: 1000;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          perspective: 1000px;
-          overflow: hidden;
-        }
-        .scene-3d {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 60px;
-          transform-style: preserve-3d;
-          z-index: 10;
-        }
-        .foil-balloon-wrapper {
-          position: absolute;
-          top: -150px;
-          right: -80px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          z-index: 50;
-        }
-        .foil-number {
-          font-family: 'Playfair Display', serif;
-          font-size: 7rem;
-          font-weight: 900;
-          background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 70%, #fbf5b7 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)) drop-shadow(0 10px 20px rgba(0,0,0,0.4));
-          position: relative;
-          letter-spacing: -5px;
-        }
-        .foil-string {
-          width: 2px;
-          height: 120px;
-          background: rgba(255,255,255,0.2);
-          margin-top: -10px;
-        }
-        .cake-3d-wrapper {
-          position: relative;
-          width: 250px;
-          height: 250px;
-          transform-style: preserve-3d;
-        }
-        .cake-body {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 200px;
-          display: flex;
-          flex-direction: column-reverse;
-          align-items: center;
-          transform-style: preserve-3d;
-        }
-        .layer {
-          width: 100%;
-          background: #fcf6ba;
-          border-radius: 15px 15px 5px 5px;
-          position: relative;
-          box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2), 0 10px 30px rgba(0,0,0,0.3);
-          transform-style: preserve-3d;
-        }
-        .layer.bottom { width: 220px; z-index: 1; }
-        .layer.top { width: 160px; z-index: 2; margin-bottom: -10px; background: #fff; }
-        
-        .frosting {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 15px;
-          background: #ff4d6d;
-          border-radius: 10px 10px 0 0;
-          box-shadow: 0 5px 10px rgba(255, 77, 109, 0.3);
-        }
-        .gold-frosting { background: #ffd700; }
-
-        .candles-container {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          z-index: 10;
-          transform-style: preserve-3d;
-          padding-bottom: 120px;
-        }
-        .candle {
-          width: 8px;
-          height: 40px;
-          background: linear-gradient(to bottom, #fff, #eee);
-          border-radius: 4px;
-          position: relative;
-          margin: 0 15px;
-          box-shadow: 0 0 10px rgba(255,255,255,0.2);
-        }
-        .wick {
-          position: absolute;
-          top: -5px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 2px;
-          height: 6px;
-          background: #333;
-        }
-        .flame {
-          position: absolute;
-          top: -25px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 15px;
-          height: 25px;
-          background: radial-gradient(ellipse at bottom, #ff9800 0%, #ff5722 50%, transparent 90%);
-          border-radius: 50% 50% 20% 20%;
-          filter: drop-shadow(0 0 10px #ff9800);
-        }
-
-        .intro-text-3d {
-          text-align: center;
-        }
-        .intro-text-3d h2 {
-          font-size: 3rem;
-          margin-bottom: 10px;
-        }
-        .shimmer-text {
-          animation: shimmer 2s infinite linear;
-          background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        @keyframes shimmer {
-          to { background-position: 200% center; }
-        }
-
-        .balloon::after {
-          content: "";
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 2px;
-          height: 40px;
-          background: rgba(255,255,255,0.2);
-        }
-      `}</style>
     </motion.div>
   );
 };

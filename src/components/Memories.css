@@ -10,9 +10,7 @@
 
 .rain-photo {
   position: absolute;
-  /* Remove borders so the transparent sticker looks natural */
   border: none;
-  /* Soft shadow for realistic depth of falling petals/flowers */
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   z-index: 2;
 }
@@ -59,11 +57,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0; /* Add top and bottom margins */
+  padding: 40px 0; 
 }
 
 .back-btn-memories {
-  position: fixed; /* Keep it fixed at top-left */
+  position: fixed; 
   top: 30px;
   left: 30px;
   background: rgba(255, 255, 255, 0.05);
@@ -91,7 +89,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Reduced gap */
+  gap: 20px; 
 }
 
 .gallery-item-3d {
@@ -172,20 +170,20 @@
 }
 
 .modern-text-stack {
-  margin-top: 20px; /* Reduced */
+  margin-top: 20px; 
   text-align: center;
   max-width: 500px;
 }
 
 .modern-memories-title {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; /* Slightly smaller */
-  margin-bottom: 5px; /* Reduced */
+  font-size: 2.2rem; 
+  margin-bottom: 5px; 
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .modern-memories-desc {
-  font-size: 1rem; /* Slightly smaller */
+  font-size: 1rem; 
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
 }
@@ -193,14 +191,14 @@
 .navigation-controls {
   display: flex;
   align-items: center;
-  gap: 30px; /* Reduced */
+  gap: 30px; 
 }
 
 .modern-nav-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  width: 50px; /* Smaller */
+  width: 50px; 
   height: 50px;
   border-radius: 50%;
   display: flex;
@@ -234,11 +232,11 @@
 }
 
 .final-message-btn-modern {
-  margin-top: 20px; /* Reduced */
+  margin-top: 20px; 
   background: rgba(255, 215, 0, 0.1);
   border: 1px solid rgba(255, 215, 0, 0.4);
   color: #ffd700;
-  padding: 12px 30px; /* Reduced padding */
+  padding: 12px 30px; 
   border-radius: 50px;
   display: flex;
   align-items: center;

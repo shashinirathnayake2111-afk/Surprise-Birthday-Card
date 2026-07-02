@@ -275,8 +275,9 @@ const BucketList = ({ onBack }) => {
   const [revealingId, setRevealingId] = useState(null);
   const [revealAll, setRevealAll] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
+  const [isSecondChance, setIsSecondChance] = useState(false);
 
-  const gifts = [
+  const initialGifts = [
     { 
       id: 1, 
       name: "Special Chocolate Box 🍫", 
@@ -313,6 +314,19 @@ const BucketList = ({ onBack }) => {
       message: "Let's go grab some pizza together! I'll call and set it up. A spontaneous sponsored treat! 🍕🥤"
     }
   ];
+
+  const [giftsList, setGiftsList] = useState(initialGifts);
+
+  const handleReset = () => {
+    // Shuffle gifts so they are in different places
+    const shuffled = [...giftsList].sort(() => Math.random() - 0.5);
+    setGiftsList(shuffled);
+    setSelectedGift(null);
+    setRevealingId(null);
+    setRevealAll(false);
+    setIsLocked(false);
+    setIsSecondChance(true);
+  };
 
   const handleSelect = (gift) => {
     if (isLocked || revealingId || selectedGift) return;
@@ -380,7 +394,7 @@ const BucketList = ({ onBack }) => {
             </div>
 
             <div className="gift-cards-grid">
-              {gifts.map((g) => (
+              {giftsList.map((g) => (
                 <motion.div
                   key={g.id}
                   className={`gift-card-3d-wrapper ${(selectedGift?.id === g.id || revealAll) ? 'flipped' : ''} ${revealingId === g.id ? 'revealing' : ''}`}
@@ -473,14 +487,16 @@ const BucketList = ({ onBack }) => {
               >
                 Send Choice to Me 🚀
               </a>
-              <motion.button 
-                className="reset-choice-btn"
-                onClick={() => setIsLocked(false)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Choose Another Gift 🔄
-              </motion.button>
+              {!isSecondChance && (
+                <motion.button 
+                  className="reset-choice-btn"
+                  onClick={handleReset}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Choose Another Gift 🔄
+                </motion.button>
+              )}
             </div>
           </motion.div>
         )}
