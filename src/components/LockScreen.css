@@ -94,3 +94,19 @@
 .numpad-btn:hover {
   border-color: rgba(255, 215, 0, 0.3);
 }
+
+@media (max-width: 400px) {
+  .lock-content-wrapper {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .numpad-grid {
+    gap: 10px;
+  }
+
+  .numpad-btn {
+    height: 52px;
+    font-size: 1.1rem;
+  }
+}

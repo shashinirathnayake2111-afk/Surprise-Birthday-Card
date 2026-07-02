@@ -497,7 +497,7 @@
 /* --- Mobile Responsiveness (Must be at the bottom) --- */
 @media (max-width: 600px) {
   .message-page-container {
-    padding: 10px;
+    padding: 20px 15px;
     align-items: center; /* Center on mobile too */
   }
 

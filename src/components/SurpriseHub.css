@@ -1381,12 +1381,12 @@
   }
 
   .hub-interface {
-    padding: 80px 10px 20px;
+    padding: 80px 20px 20px;
   }
 
   .floating-orbs-container {
     gap: 20px;
-    padding: 10px;
+    padding: 10px 15px;
   }
 
   .surprise-orb-wrapper {
@@ -1423,7 +1423,7 @@
 
   /* 3D Friendship Grid Mobile */
   .friendship-galaxy-container {
-    padding: 40px 10px;
+    padding: 40px 15px;
   }
 
   .galaxy-orbit {
@@ -1568,7 +1568,7 @@
   .friendship-galaxy-container {
     height: auto;
     min-height: 100vh;
-    padding: 100px 10px 120px;
+    padding: 100px 15px 120px;
     /* Added more bottom padding for scrolling */
     display: flex;
     flex-direction: column;
@@ -2315,8 +2315,8 @@
   .gift-selector-card,
   .gift-confirm-card {
     padding: 25px 20px;
-    margin: 80px auto 40px;
-    width: 95%;
+    margin: 80px 15px 40px;
+    width: calc(100% - 30px);
   }
 
   .gift-cards-grid {

@@ -256,9 +256,10 @@
 
 @media (max-width: 600px) {
   .photo-stack { width: 250px; height: 350px; }
-  .modern-memories-title { font-size: 1.8rem; }
-  .modern-memories-desc { font-size: 0.9rem; }
+  .modern-memories-title { font-size: 1.8rem; padding: 0 15px; }
+  .modern-memories-desc { font-size: 0.9rem; padding: 0 15px; }
   .modern-nav-btn { width: 50px; height: 50px; }
   .navigation-controls { gap: 20px; }
   .back-btn-memories { padding: 8px 15px; font-size: 0.9rem; }
+  .slider-content-area { padding: 0 15px; }
 }
