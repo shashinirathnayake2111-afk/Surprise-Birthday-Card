@@ -2312,70 +2312,100 @@
 
 /* Responsive adjustment for Gift Selector */
 @media (max-width: 600px) {
-  .gift-selector-card,
+  .gift-selector-card {
+    padding: 5px;
+    margin: 50px 5px 10px; /* Top margin reduced, enough for back button */
+    width: 100%;
+    gap: 10px;
+  }
+
   .gift-confirm-card {
-    padding: 25px 20px;
-    margin: 80px 15px 40px;
+    padding: 20px 15px;
+    margin: 50px 15px 20px;
     width: calc(100% - 30px);
   }
 
   .gift-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
   }
 
   .gift-card-3d-wrapper {
-    height: 150px;
+    width: calc(33.3% - 6px);
+    height: 120px;
   }
 
   .gift-card-3d-front,
   .gift-card-3d-back {
-    padding: 10px;
-    gap: 5px;
+    padding: 8px 4px;
+    gap: 4px;
   }
 
   .mystery-sticker {
-    font-size: 1.8rem;
-    width: 40px;
-    height: 40px;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
   }
 
   .mystery-tap-hint {
-    font-size: 0.6rem;
-    letter-spacing: 0.5px;
+    font-size: 0.55rem;
+    letter-spacing: 0;
   }
 
   .gift-option-icon {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .gift-option-name {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
+    line-height: 1.1;
   }
 
   .gift-option-desc {
-    font-size: 0.6rem;
-    line-height: 1.25;
+    display: none; /* Hide description on mobile to save vertical space */
   }
 
   .gift-selected-badge {
-    font-size: 0.5rem;
-    padding: 2px 6px;
-    top: 6px;
-    right: 6px;
+    font-size: 0.45rem;
+    padding: 2px 4px;
+    top: 4px;
+    right: 4px;
+  }
+
+  .dream-portal-title {
+    font-size: 1.3rem;
+    margin-bottom: 2px;
+  }
+
+  .gift-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .claim-section {
+    margin-top: 5px;
+  }
+
+  .claim-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
   }
 
   .confirm-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .selected-gift-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .gift-message {
-    font-size: 0.85rem;
-    padding: 10px 12px;
+    font-size: 0.8rem;
+    padding: 8px 10px;
   }
 
   .share-whatsapp-btn {
