@@ -96,11 +96,18 @@
   border-color: rgba(255, 215, 0, 0.3);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  .lock-screen-container {
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+
   .lock-content-wrapper {
     width: 300px;
     max-width: calc(100% - 32px);
-    padding: 30px 16px;
+    padding: 24px 16px;
+    gap: 20px;
   }
 
   .numpad-grid {
@@ -108,7 +115,7 @@
   }
 
   .numpad-btn {
-    height: 52px;
+    height: 50px;
     font-size: 1.1rem;
   }
 }

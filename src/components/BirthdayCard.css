@@ -295,41 +295,159 @@
 }
 
 /* ===========================
-   Responsive
+   Responsive — Tablet / Large Mobile
    =========================== */
 @media (max-width: 600px) {
   .bc-wrapper {
     max-width: 100%;
-    margin: 0 auto;
-    padding: 15px;
+    padding: 12px;
+    align-items: flex-start;
+    padding-top: 16px;
   }
 
   .bc-card {
-    padding: 20px 16px 16px;
-    border-radius: 24px;
-    gap: 16px;
+    padding: 18px 14px 14px;
+    border-radius: 22px;
+    gap: 14px;
+    max-height: none;
   }
 
+  /* Banner */
+  .bc-banner-pill {
+    font-size: 0.62rem;
+    padding: 7px 16px;
+    letter-spacing: 2px;
+  }
+
+  /* Title */
   .bc-title {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
+    margin-bottom: 8px;
   }
 
+  .bc-subtitle {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* Message */
   .bc-message {
-    font-size: 0.92rem;
-    padding: 18px 18px;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    padding: 14px 14px;
+    border-radius: 16px;
+  }
+
+  .bc-message-quote {
+    font-size: 2rem;
+  }
+
+  /* Tags */
+  .bc-tags-label {
+    font-size: 0.68rem;
   }
 
   .bc-tags-row {
-    gap: 8px;
+    gap: 7px;
   }
 
   .bc-tag {
-    padding: 9px 14px;
-    font-size: 0.78rem;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .bc-tag-emoji {
+    font-size: 0.9rem;
+  }
+
+  .bc-tag-label {
+    font-size: 0.75rem;
+  }
+
+  .bc-tag-reveal {
+    font-size: 0.82rem;
+    padding: 10px 16px;
+    border-radius: 12px;
+  }
+
+  /* Chips */
+  .bc-chips {
+    gap: 7px;
   }
 
   .bc-chip {
-    font-size: 0.74rem;
-    padding: 8px 14px;
+    font-size: 0.7rem;
+    padding: 7px 12px;
+  }
+
+  /* Footer */
+  .bc-footer {
+    padding-top: 14px;
+  }
+
+  .bc-footer-text {
+    font-size: 0.82rem;
   }
 }
+
+/* ===========================
+   Responsive — Small Mobile (≤ 380px)
+   =========================== */
+@media (max-width: 380px) {
+  .bc-wrapper {
+    padding: 8px;
+    padding-top: 12px;
+  }
+
+  .bc-card {
+    padding: 14px 12px 12px;
+    gap: 12px;
+    border-radius: 18px;
+  }
+
+  .bc-banner-pill {
+    font-size: 0.58rem;
+    padding: 6px 13px;
+    letter-spacing: 1.5px;
+  }
+
+  .bc-title {
+    font-size: 1.42rem;
+    margin-bottom: 6px;
+  }
+
+  .bc-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .bc-message {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    padding: 12px 12px;
+  }
+
+  .bc-message-quote {
+    font-size: 1.6rem;
+  }
+
+  .bc-tag {
+    padding: 7px 10px;
+    font-size: 0.7rem;
+  }
+
+  .bc-tag-reveal {
+    font-size: 0.76rem;
+    padding: 8px 12px;
+  }
+
+  .bc-chip {
+    font-size: 0.65rem;
+    padding: 6px 10px;
+  }
+
+  .bc-footer-text {
+    font-size: 0.75rem;
+  }
+}
+
