@@ -49,7 +49,7 @@ const MusicPlayer = () => {
         src={songs[currentSongIndex].url} 
         onEnded={nextSong}
         crossOrigin="anonymous"
-        preload="auto"
+        preload="none"
         loop={false}
       />
       
