@@ -98,9 +98,9 @@
 
 @media (max-width: 480px) {
   .lock-screen-container {
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 80px;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 60px;
   }
 
   .lock-content-wrapper {

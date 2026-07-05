@@ -133,16 +133,17 @@ const MessagePage = ({ onBack, onNextSurprise }) => {
         <div className="toothless-bubble bubble-blue">Rawrrr Bathali! 🤪🔥</div>
       </motion.div>
 
-      <div className="letter-wrapper">
-        <motion.button 
-          className="back-btn-letter" 
-          onClick={onBack}
-          whileHover={{ scale: 1.1 }}
-        >
-          <ArrowLeft size={20} />
-          <span>Go Back</span>
-        </motion.button>
+      {/* Back Button - Moved outside wrapper so fixed position works correctly on mobile */}
+      <motion.button 
+        className="back-btn-letter" 
+        onClick={onBack}
+        whileHover={{ scale: 1.1 }}
+      >
+        <ArrowLeft size={20} />
+        <span>Go Back</span>
+      </motion.button>
 
+      <div className="letter-wrapper">
         <div className={`envelope ${isOpen ? 'open' : ''}`} onClick={handleOpenEnvelope}>
           <div className="envelope-back"></div>
 
@@ -158,17 +159,7 @@ const MessagePage = ({ onBack, onNextSurprise }) => {
             <img src={toothless2} alt="Toothless Peeking" className="toothless-bottom-img" />
           </motion.div>
           
-          <motion.div 
-            className="letter-card"
-            initial={{ height: 480 }}
-            animate={{ 
-              y: isOpen ? -80 : 0, 
-              height: isOpen ? 630 : 480,
-              scale: isOpen ? 1.05 : 0.85,
-              zIndex: isOpen ? 50 : 2
-            }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: isOpen ? 0.4 : 0 }}
-          >
+          <div className={`letter-card ${isOpen ? 'is-open' : ''}`}>
             <div className="letter-inner">
               <div className="letter-sparkle-top">✨</div>
               <div className="letter-sparkle-bottom">✨</div>
@@ -187,7 +178,7 @@ const MessagePage = ({ onBack, onNextSurprise }) => {
                 May this year bring you all the love, endless laughter, and success you deserve. Stay happy, keep smiling, and take care of yourself, my buddy! Happy Birthday! 🥳💛
               </p>
             </div>
-          </motion.div>
+          </div>
 
           <div className="envelope-front">
             <div className="seal">

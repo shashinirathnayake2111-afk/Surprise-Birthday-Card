@@ -148,19 +148,31 @@
 
 .letter-card {
   position: absolute;
-  top: 10px; /* Positioned slightly higher inside */
+  top: 10px;
   left: 25px;
   width: 500px;
-  height: 480px; /* Increased to fit more text */
-  background: #fffdf5; /* Warm cream paper color */
+  background: #fffdf5; 
   background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 100% 32px;
-  z-index: 2;
   padding: 40px 45px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.35);
   overflow-y: auto;
   border-radius: 8px;
-  border-left: 2px solid rgba(255, 77, 109, 0.25); /* Pink margin line */
+  border-left: 2px solid rgba(255, 77, 109, 0.25); 
+
+  /* Responsive animations handled by CSS */
+  height: 480px; 
+  z-index: 2;
+  transform: translateY(0) scale(0.85);
+  transition: all 0.8s ease-out;
+  transition-delay: 0s;
+}
+
+.letter-card.is-open {
+  height: 630px;
+  transform: translateY(-80px) scale(1.05);
+  z-index: 50;
+  transition-delay: 0.4s;
 }
 
 .letter-card::-webkit-scrollbar {
@@ -519,6 +531,12 @@
     height: 320px;
     left: 15px;
     padding: 25px 25px;
+    transform: translateY(0) scale(0.85);
+  }
+  
+  .letter-card.is-open {
+    height: 480px;
+    transform: translateY(-50px) scale(1.05);
   }
 
   .letter-title { font-size: 1.4rem; }
