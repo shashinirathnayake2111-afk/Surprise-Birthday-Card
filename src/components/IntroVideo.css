@@ -31,6 +31,12 @@
   perspective: 1000px;
   overflow: hidden;
 }
+
+@media (max-width: 600px) {
+  .intro-3d-container {
+    overflow: visible;
+  }
+}
 .scene-3d {
   position: relative;
   display: flex;
@@ -66,6 +72,19 @@
   height: 120px;
   background: rgba(255,255,255,0.2);
   margin-top: -10px;
+}
+
+@media (max-width: 600px) {
+  .foil-balloon-wrapper {
+    top: -100px;
+    right: 10px;
+  }
+  .foil-number {
+    font-size: 4.5rem;
+  }
+  .foil-string {
+    height: 80px;
+  }
 }
 .cake-3d-wrapper {
   position: relative;

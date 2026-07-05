@@ -98,6 +98,8 @@
 
 @media (max-width: 400px) {
   .lock-content-wrapper {
+    width: 300px;
+    max-width: calc(100% - 32px);
     padding: 30px 16px;
   }
 

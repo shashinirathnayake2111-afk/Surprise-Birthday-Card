@@ -1,28 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, SkipForward, Music } from 'lucide-react';
+import { Play, Pause, Music } from 'lucide-react';
 import './MusicPlayer.css';
 
 const songs = [
-  { title: "Gymnopédie No. 1 (Calm Piano) 🎹", url: "/song1.mp3" },
   { title: "Moonlight Sonata (Peaceful) 🌙", url: "/song2.mp3" }
 ];
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const audioRef = useRef(null);
-
-  useEffect(() => {
-    // Only auto-play when the song changes IF we are already playing
-    if (isPlaying && audioRef.current) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(e => console.log("Auto-play failed", e));
-      }
-    }
-  }, [currentSongIndex]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -37,20 +25,14 @@ const MusicPlayer = () => {
     }
   };
 
-  const nextSong = () => {
-    setCurrentSongIndex((prev) => (prev + 1) % songs.length);
-    setIsPlaying(true);
-  };
-
   return (
     <div className="floating-music-player">
       <audio 
         ref={audioRef} 
-        src={songs[currentSongIndex].url} 
-        onEnded={nextSong}
+        src={songs[0].url} 
         crossOrigin="anonymous"
-        preload="none"
-        loop={false}
+        preload="auto"
+        loop={true}
       />
       
       <AnimatePresence>
@@ -62,7 +44,7 @@ const MusicPlayer = () => {
             exit={{ opacity: 0, x: -20, scale: 0.8 }}
           >
             <div className="song-info">
-              <span className="song-title">{songs[currentSongIndex].title}</span>
+              <span className="song-title">{songs[0].title}</span>
               <div className="equalizer">
                 <span className={`bar ${isPlaying ? 'playing' : ''}`}></span>
                 <span className={`bar ${isPlaying ? 'playing' : ''}`}></span>
@@ -73,9 +55,6 @@ const MusicPlayer = () => {
             <div className="control-buttons">
               <button className="ctrl-btn" onClick={togglePlay}>
                 {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-              </button>
-              <button className="ctrl-btn" onClick={nextSong}>
-                <SkipForward size={18} />
               </button>
             </div>
           </motion.div>
