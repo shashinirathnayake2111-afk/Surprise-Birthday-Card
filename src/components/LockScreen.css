@@ -11,6 +11,7 @@
 
 .lock-content-wrapper {
   width: 320px;
+  max-width: calc(100% - 32px);
   padding: 40px 20px;
   text-align: center;
   display: flex;
@@ -97,8 +98,7 @@
 
 @media (max-width: 400px) {
   .lock-content-wrapper {
-    width: 100%;
-    padding: 30px 20px;
+    padding: 30px 16px;
   }
 
   .numpad-grid {
